@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Form</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+	<form method="POST" action="/GoodBye">
+		<script>
+			function toggleTextBox(type) {
+				if (type == 'recommendation') {
+					var radio = document.getElementsByName("recommend");
+					var textbox = document.getElementById("other-feedback-for-recommendation");
+					if (radio[2].checked) { // show textbox only if "Other" radio button is selected
+						textbox.style.display = "block";
+					} else {
+						textbox.style.display = "none";
+					}
+				}else (type == 'suggestion')
+				var radio = document.getElementsByName("howapp");
+				var textbox = document.getElementById("other-feedback-for-suggestion");
+				if (radio[2].checked) { // show textbox only if "Other" radio button is selected
+					textbox.style.display = "block";
+				} else {
+					textbox.style.display = "none";
+				}
+			}
+		</script>
+		<div  class="wrapper">
+		<h1>Feedback Form</h1>
+
+		<div class="form-control">
+			<label for="role" id="label-role">
+				In your opinion, How was the accuracy of prediction?
+			</label>
+			
+			<!-- Dropdown options -->
+			<select name="Prediction_Accuracy" id="Prediction_Accuracy">
+				<option value="Excellent">Excellent</option>
+				<option value="Average">Average</option>
+				<option value="Poor">
+					Poor
+				</option>
+			</select>
+		</div>
+
+		<div class="form-control">
+
+			<label for="feedback-type-for-recommendation">Would you recommend this to anyone?</label><br>
+			<input type="radio" id="feedback-type-for-recommendation-positive" name="recommend" value="Yes" checked="checked" onclick="toggleTextBox('recommendation')">Yes<br>
+			<input type="radio" id="feedback-type-for-recommendation-negative" name="recommend" value="No" onclick="toggleTextBox('recommendation')">No<br>
+			<input type="radio" id="feedback-type-for-recommendation-other" name="recommend" value="Maybe" onclick="toggleTextBox('recommendation')">Maybe<br>
+
+			<label for="other-feedback-for-recommendation" style="display:none;">Please describe your
+				feedback:</label><br>
+			<textarea id="other-feedback-for-recommendation" name="other-feedback-for-recommendation"
+				placeholder="What are the reasons behind it?..." rows="4" cols="50" style="display:none;"></textarea>
+
+
+		</div>
+
+		<div class="form-control">
+
+			<label for="feedback-type-for-suggestion"> How was this application according to you?</label><br>
+			<input type="radio" id="feedback-type-for-suggestion-positive" name="howapp" onclick="toggleTextBox('suggestion')" checked="checked">User-friendly<br>
+			<input type="radio" id="feedback-type-for-suggestion-negative" name="howapp" onclick="toggleTextBox('suggestion')">Quick recommendations<br>
+			<input type="radio" id="feedback-type-for-suggestion-other" name="howapp" onclick="toggleTextBox('suggestion')">Inconvenient<br>
+			<label for="other-feedback-for-suggestion" style="display:none;">Please describe your
+				feedback:</label><br>
+			<textarea id="other-feedback-for-suggestion" name="other-feedback-for-suggestion"
+				placeholder="Why wasn't it easy to use?..." rows="4" cols="50" style="display:none;"></textarea>
+		</div>
+
+		<div class="form-control">
+			<label for="role" id="label-role">
+				How did you like the Speech recognition feature?
+			</label>
+
+			<!-- Dropdown options -->
+			<select name="Speech_Recognition" id="Speech_Recognition">
+				<option value="Excellent">Excellent</option>
+				<option value="Average">Average</option>
+				<option value="Poor">
+					Poor
+				</option>
+			</select>
+		</div>
+		<!-- Multi-line Text Input Control -->
+		<div class="button">
+			<input type="submit" value="SendFeedback"
+				style="
+		margin-bottom: 14px; border: none; background-color: dodgerblue; color: #fff; font-weight: 500; padding: 10px; width: 135px; border-radius: 30px; margin-left: 75%; transition: .5s; transform: translate(0px, 0px); margin-left: 9px;" />
+			<br>
+			<a href="/">Log Out</a>
+		</div>
+		</div>
+	</form>
+</body>
+
+</html>

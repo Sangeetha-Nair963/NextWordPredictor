@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form validation</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="wrapper">
+    <header>Sign Up</header>
+    <form method="POST" action="/">
+      <div class="field">
+          <input type="text" name="uname" placeholder="Email Address" required>
+      </div>
+      <div class="field">
+          <input type="password" name="pass" placeholder="Password" required>
+      </div>
+      <div class="field">
+          <input type="password" placeholder="Confirm password" required>
+      </div>
+      <input type="submit" value="SignUp"/>  
+    </form>
+</body>
+<script>
+const loginText = document.querySelector(".title-text .login");
+const loginForm = document.querySelector("form.login");
+const loginBtn = document.querySelector("label.login");
+const signupBtn = document.querySelector("label.signup");
+const signupLink = document.querySelector("form .signup-link a");
+signupBtn.onclick = (()=>{
+loginForm.style.marginLeft = "-50%";
+loginText.style.marginLeft = "-50%";
+});
+loginBtn.onclick = (()=>{
+loginForm.style.marginLeft = "0%";
+loginText.style.marginLeft = "0%";
+});
+signupLink.onclick = (()=>{
+signupBtn.click();
+return false;
+});
+</script>
+</html>

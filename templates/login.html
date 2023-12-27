@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form validation</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+  <div class="wrapper">
+    <header>Login</header>
+    <form method="POST" action="/main">
+      <div class="field email">
+        <div class="input-area">
+          <input type="text" name = "uname" placeholder="Email Address">
+          <i class="icon fas fa-envelope"></i>
+          <i class="error error-icon fas fa-exclamation-circle"></i>
+        </div>
+        <div class="error error-txt">Email can't be blank</div>
+      </div>
+      <div class="field password">
+        <div class="input-area">
+          <input type="password" name ="pass" placeholder="Password">
+          <i class="icon fas fa-lock"></i>
+          <i class="error error-icon fas fa-exclamation-circle"></i>
+        </div>
+        <div class="error error-txt">Password can't be blank</div>
+      </div>
+        <input type="submit" value="Login"/>  
+    </form>
+    <form class="login-form">
+      <a href="/signUp">Not a member? Signup Now!</a>
+    </form>
+  </div>
+</body>
+<script>
+const loginText = document.querySelector(".title-text .login");
+const loginForm = document.querySelector("form.login");
+const loginBtn = document.querySelector("label.login");
+const signupBtn = document.querySelector("label.signup");
+const signupLink = document.querySelector("form .signup-link a");
+signupBtn.onclick = (()=>{
+loginForm.style.marginLeft = "-50%";
+loginText.style.marginLeft = "-50%";
+});
+loginBtn.onclick = (()=>{
+loginForm.style.marginLeft = "0%";
+loginText.style.marginLeft = "0%";
+});
+signupLink.onclick = (()=>{
+signupBtn.click();
+return false;
+});   
+</script>
+</html>
